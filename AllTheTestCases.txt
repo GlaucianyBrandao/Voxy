@@ -12,7 +12,8 @@ When user selects the option "mobile number"
 Then the mobile number field should be exhibt
 
 Scenario: Verification of the country code
-Given the user is at the login page
+
+Given the user is on the login page
 And will log with the mobile number
 When user fills with the mobile number
 Then a select box for the country code should be exhibit
@@ -24,17 +25,14 @@ When user selects the option "email"
 Then the email field should be exhibt
 
 Scenario: Login with a valid unregistered email
-Given the user is at the login page
+
+Given the is at the login page
 When user fill the email field with a valid unregistered email
 And press the "Continue" button
 Then a sorry message should be exhibit
 
 Scenario: Login with an invalid email
-Given the user is at the login page
+
+Given the is at the login page
 When user fill the email field with an invalid email
 Then the "Continue" button isn't to be able
-
-Scenario: Login with empty email field
-Given Given the user is at the login page
-When user tries to log with the email feild empty
-Then user should not be able to continue
