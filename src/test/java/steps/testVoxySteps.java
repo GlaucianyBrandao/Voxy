@@ -15,9 +15,12 @@ public class testVoxySteps {
     String url ="https://web-stage.voxy.com/v2/#/login";
     String expected = "ATIVE SUA CONTA ";
     String name;
-    String email = "glaucianybrandao@gmail.com";
+    String email = "interview+20210923+1@voxy.com";
     String message;
     String message_expected = "IH!";
+    String password = "igXnt0ESc15m";
+    String homepage = "My English Program";
+    String home;
 
     @Before
     public void setup(){
@@ -53,15 +56,38 @@ public class testVoxySteps {
         driver.findElement(By.id("login_form_email_input_field")).sendKeys(email);
     }
 
-    @When("press the continue button")
-    public void press_the_continue_button() {
-        driver.findElement(By.id("login_form_submit_button")).click();
-    }
+    // @When("press the continue button")
+   // public void press_the_continue_button() {
+   //   driver.findElement(By.id("login_form_submit_button")).click();
+   // }
 
     @Then("a sorry message should be exhibit")
     public void a_sorry_message_should_be_exhibit() {
         message = driver.findElement(By.className("login-error-message__title")).getText();
         Assert.assertEquals(message, message_expected);
     }
+
+    @When("user fill the email field with a valid registered email")
+    public void user_fill_the_email_field_with_a_valid_registered_email() {
+        driver.findElement(By.id("login_form_email_input_field")).sendKeys(email);
+    }
+
+    @When("press the Continue button")
+    public void press_the_continue_button() {
+        driver.findElement(By.id("login_form_submit_button")).click();
+    }
+
+    @When("user fill the password field with a valid password")
+    public void user_fill_the_password_field_with_a_valid_password() {
+        driver.findElement(By.id("password_input_field")).sendKeys(password);
+        driver.findElement(By.id("voxy-button__text")).click();
+    }
+
+    @Then("user should access the homepage")
+    public void user_should_access_the_homepage() {
+        home = driver.findElement(By.className("home-feed__heading")).getText();
+        Assert.assertEquals(homepage, home);
+    }
+
 
 }
